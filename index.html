@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Xếp hình =))</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background-color: #333;
+    }
+
+    main {
+      box-sizing: border-box;
+      position: relative;
+      margin: auto;
+      height: 100%;
+      aspect-ratio: 4/7;
+      background-color: rgb(252, 168, 0);
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 2px 2px white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Dành cho điện thoại */
+    @media all and (max-width: 480px) {
+      main {
+        width: 100%;
+      }
+    }
+
+    .top-body {
+      display: flex;
+    }
+
+    #main-screen {
+      position: relative;
+      width: 60%;
+      background-color: #999;
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto auto auto;
+      gap: 1px;
+      box-shadow: 0 0 2px 2px white;
+    }
+
+    #sub-screen {
+      position: relative;
+      width: 100%;
+      background-color: #999;
+      display: grid;
+      grid-template-columns: auto auto auto auto auto;
+      gap: 1px;
+      box-shadow: 0 0 2px 2px white;
+    }
+
+    .box {
+      width: 100%;
+      aspect-ratio: 1/1;
+      box-shadow: inset 0px 0px 2px 1px black;
+    }
+
+    #control {
+      position: relative;
+      width: 100%;
+    }
+
+    #control>.left {
+      width: 55%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    #info {
+      width: 40%;
+      margin-left: 20px;
+    }
+
+    #info .score {
+      text-align: left;
+      padding: 10px 20px;
+      background-color: white;
+      width: calc(100% - 40px);
+      border: thin solid #333;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .btn {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #444;
+      transition: box-shadow 0.4s;
+      box-shadow: 3px 3px 3px 2px black;
+      text-shadow: 1px 1px 3px black;
+      color: white;
+    }
+
+    .img-btn {
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: white;
+      transition: box-shadow 0.4s;
+      box-shadow: 3px 3px 3px 2px black;
+    }
+
+    .btn:hover,
+    .img-btn:hover {
+      box-shadow: 3px 3px 5px 3px black;
+    }
+
+    .btn.active,
+    .img-btn.active {
+      box-shadow: 1px 1px 0px 1px black;
+      transition-duration: 200ms;
+    }
+
+    .bg-1 {
+      background-color: #45ad4e;
+    }
+
+    .bg-2 {
+      background-color: #f4665c;
+    }
+
+    .w-100 {
+      width: 100%;
+    }
+
+    .mt-1 {
+      margin-top: 4px !important;
+    }
+
+    .mt-2 {
+      margin-top: 8px !important;
+    }
+
+    .mt-3 {
+      margin-top: 12px !important;
+    }
+
+    .mb-1 {
+      margin-bottom: 4px !important;
+    }
+
+    .mb-2 {
+      margin-bottom: 8px !important;
+    }
+
+    .mb-3 {
+      margin-bottom: 12px !important;
+    }
+
+    p {
+      margin: auto;
+    }
+
+    .sub-title {
+      font-weight: bold;
+      text-shadow: 0px 0px 3px black, 1px 1px 3px black;
+      color: white;
+      font-size: 1.2em;
+      margin-bottom: 4px;
+    }
+  </style>
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="top-body">
+      <div id="main-screen"></div>
+      <div id="info">
+        <p class="sub-title">SCORE</p>
+        <div class="score">
+          <span id="score">0</span>
+        </div>
+
+        <p class="sub-title mt-2">BEST</p>
+        <div class="score mb-3">
+          <span id="score">0</span>
+        </div>
+
+        <div id="sub-screen">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+
+        <div class="action-control mt-3">
+          <button class="btn bg-1 w-100" id="btn-play" onclick="play(this)">Play</button>
+          <button class="btn bg-2 w-100" id="btn-pause" onclick="pause(this)" style="display: none;">Pause</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="control" class="mb-3">
+      <!-- <button class="btn" onclick="move('left')">L</button>
+      <button class="btn" onclick="move('up')">U</button>
+      <button class="btn" onclick="move('right')">R</button>
+      <div></div>
+      <button class="btn" onclick="move('down')">D</button>
+      <div></div> -->
+      <div class="left">
+        <img class="img-btn" onclick="move('left')"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADc0lEQVR4nO2ay0tVURTGf5LpDSPzqiWNahhG9VeYYg9zVtmssEkm1rTH2BoJgn9HIWJRIfSyhylEZtaobBDZrKtiYSz8DizqXr333HPPPYofHLi691n7sdZej28f2MLmRRroAG4Dw8AH4CewpMd+T6vN+pwC6kgIUsB54D7wB1gp8PkNjAJdQHU5FrADuAp8c5NaBB4B16WZg9rx7Xrq9D9ruwE81jvB+3NAnzYnFrQDn90EXgEXgNoQsnYDF4HXTt4noI0SwnZqyA34BmiJUH4r8NbJHyyFdpo0cRvgF3AZ2Bb1IKzKvAJknLb3RiX8gNS9Iq9ziNLjMDCjMWc1h6LQ6AS+BBqID3XAE439WVYRCilnTs+AGuJHDfDCmVmoMzPkzMmCXblQ76zCHEDBLjY42HGciXzOTEZzMu+Wd7AL4oR5p6Sg1x3+vEzsmosTUbrYJgW+5yHfrwQmNTdb1JpIubSjJeJFTEvuBFARUk6bZHxdLzfrch6iFIuYLsaNsroBgSc9u1bHB+pkuVMUsKj8TjItrd8XgcxuyRvJ1SGttHoxZAJYSk38GyitvlnONc/TGvQhydSEx5hknyAL7qjR6okkasLjluT3kwXDajxJcjXxr/XcJQs+qtGquKRqIkCz26z/MK/GdII1EaBBY30nC5bUWEXhmIpJEwGqHU+weRcyX4Rp7XGmNRODaTWuZVqb5rAPq9EYwLCISzOda7nfICAaebahA2KHGo0tLBal1syYZB/PlYwFSaMxgCRUM2mXNO7K1WlUAxuNSUI1c0ny7EznxDl1spI0qYXVhGSdWa/UnVPHY5RmMVZ3h0W7ZHzJ5xqiz9XWUZMPkyLcwpIPU5pbTz4vpBzXa4RyUtDnzlp1oWxFRuRYuXEUWAjL7gy6HTDaslxoFClncxkIIyAlWmhFdl0OEnsnMK45jBdzz9ioxCy4VrC/40IaeOqu44q+8DngVGtmdoR4zsSsxrSsfH9Ugvc6M8uIezV3GDUq5Z0WnDlZdhApUs4BBIEtqtvXCgW7KSd/oNR3761O7QFr3x3yK4a0cqcg7ViRKUVJoK+rnV6x4sEElpRe3xTv1Cy3XaWnXpdGneoz5niCIO3oKdcXENVixUdUAhT6Cceystgz5VpANtSKi7Wq7Z6SxB/uoxr7/V7lab/65qwntsAGx1+7t04xbgmu8QAAAABJRU5ErkJggg==">
+        <img class="img-btn" onclick="move('up')"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADjElEQVR4nO2az29MURTHP6I6IxV02jKx0qVU8E+g9ZtdqR1ho6Rs0XVZSZr4O/yI1AJNEL+1iagqK3Qh2Gk1yMiJ70tOxsz0zZs7M4/4Ji99nXPvuefce+6555z74D/+XeSAfcAF4DrwCvgCLOix9ynRrM1eoJ2UIAscBm4CP4FClc8PYAwYADLNUGA5cBqYdUJ9A24BZ7UyGzTjy/S06zejnQNuq0/U/wMwpMlpCHYCb50Aj4EjwKoEvFYDR4Enjt8boI86wmbqshvwKbAtIP9e4LnjP1qP1clLcBvgK3ACWBp6EH7zPAnMudVeG4p5t5a7IK+zkfpjEzCtMWckQ03ocgwfAZ00Du3AXY39VlaRCFlnTveBNhqPNuCBM7NEe+ayMyc77JqFDmcV5gCqdrHRxm7EnoizZ+Ykk3m32IdddE6Yd0oLTrnNH8vEzrhzoh4uNilagAnJZkpVREahgjXeSvqwQ7LNLrYqA85DpBFLnCc9WKnhTTWy2CkE8oqjJmo5B4pwTDLeoAxyCqu/JQwAi5GX645ip6lAyrQrv/leTs59GtBC8ZBKTBW9h1DmjvjtKUW8KKLlEyGVyJf5rRYMi9dIKeL1SlrGhEWqL8THUt11jrbG0aaLaNViv/hcKUV8LaJlcUkQZ9ZDrUyPm6w/8FnEXOCVKEaIlelU/4+liAsittZRiVDKZFydIIgiSZQIoUymkiLVmlYtStSqTFcl06p2s08GcqfeAUyE2OzXRLQKYBw8VNUjxAGXlxIPQrjf6EC04lnaMVzpQAwZotQb45J1V7lgLAoarQKYVuRc0LiyXKMxaWplzLTiuGS0kKosDqmR5RBpTayeScb+xQ6a92q4nfRhl2R7F+caYkiNn6Ww+DAp2QbjdMi6Wq8VlNOCIRcBxL4U6lOnORXHmo0twLxkqvoqY9TNgJUtm4UuFeVMlktJGGRVFioodGhGEXuFQqGC/mZqmY1X7lrB/m/kwXfPXcfVfOHT7ZbWzGwzjdkTMxrTovL1oRivdWY2p9qrucPQaJF3mnfmZDlLUGSdA4hyh76AJ7ZdZUTnRLSx63r33uuWParaH0v4FUNOsVMUdhRkSiFvixddnVMunCkoIrXw+rwSnx657VY9Hbo0OqA2465OEIUdg836AiKjqvgNpQDVfsLxXVFsf7MUKAUrKO9W1nZVefgn91GNvb9UejqitmXzif/gL8cvZOJOLT/oEqcAAAAASUVORK5CYII=">
+        <img class="img-btn" onclick="move('right')"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADdElEQVR4nO2ayWsUQRTGf6JmRhRjxsSIJz1KRP0r1BD3m9tNiRdjiF5dztGTEMjfoYQQRUVQcY0LotGYk8tBjDcnBpWRh1/DQ2cmMz3VPZ2QD5pZXvWrqn5LvfqqYRELFwVgP3AJGAEmgG/ArC77/kYya7MPaCMjyAPHgOvAb6BU5/ULGAOOArlmTGAFcAb47Ab1A7gFnJNlNuuJL9fVpv9Mdh64rXui+z8BA3o4qaAHmHIDeAwcB1pj6FoDnACeOH3vgW4ShD2pYdfhU2BHQP27gGdO/1AS1lmvgVsH34FTwNLQnfBX52mg6KzdGUr5Jpm7pKyzheSxFXirPic1hobQ4RQ+AtpJD23AXfU9Ja+Ihbxzp/vAStLHSuCBc7NYMTPs3MkWu2ZhrfMKSwB1p9gosNOIiVpipqgxWXarebGL1gnLTllBvwv+mlzsrFsn4qbYceBlIwFaBsuA5xqbTaoq8q7saGSxe+HiK+RkuqX341y12VGXIRrBek0i9GSWuEx6uFrDG2pktVOjWAe8kj7LOhsIg17pHK3UoKCy+kfMAjAty7Rpf/Oz0jgPqMObhEUSlrkjfXvKCS9LaPuJ0AhtmYvSNVhOOCLhXpJBSMsckJ6r5YTvJLRdXFIIZZku6TBe4D9MS5h0XRXCMu26/0s54ayELSQPbxlbPOtFzvEEmZmIlR1BJzKdkmt1OteaiOlaHdVca8EE+4iExgBm1RIRDlZLv9GCaOTZvF4Q90tobGFWLfFvibKbCsVYVDQaA5jVorHgisbVlRqNqVOjMbNoCcNJ6bSYrogjamRcbFY3VuPSe2iure4nNdyZwa1uj/R+qOUYYkCNxxsgHx6KkA5NPrzQ2PpquSHvuF4jlLOCAVdo5uplK4oix5qN7cBMXHZnyD0Boy2bhQ6RcjaWK3EU5EULlUQkN4PEXqV4K+kz18jTmHDHCvY7LRSAe+44ruEDn03OtOZm20gnJibVp1XlG0Mp7nRuVhT3aukwNJYpO804d7KtcVDkXQKIdnbdAVdsW+yidSIK7ETP3nc5s0esfW/MtxgKqp2isqMkVwp5WjyndfrFikcDmFV5fUG8U5fSdouutTo0Oqg2dxxPEJUdfc16AyInVnxUW4B6X+H4qSr2ULMmUA6t4mJt13ZNBeNX91KNfX+t7emg2lbcTyyCeY4/F5VOQDaUwpAAAAAASUVORK5CYII=">
+        <div></div>
+        <img class="img-btn" onclick="move('down')"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADkElEQVR4nO2aS29NURTHf4L2ClG9LW2MdCgVfAm0HvGYlZqRmqimTD3GZSSR+BykmhJEgniWilCqI3QgmLltU3Jlxf8kK9zHed17D/FPTvrYa6+91tlrr9c+8B//LvLAPuA8MApMAV+BBT32+2uNGc1eoJWMIAccBq4DP4BixOc7MA70A82NUGAFcBKYdULNA7eA09qZjXrjy/W06n82dga4rTnB/I/AsF5OXbALmHECPAaOAC0xeK0BjgJPHL93QC81hL2py27Bp8D2FPn3AM8c/0u12J1OCW4LfAOOA0vTXoRfPE8ABbfbHWkx79J2F+V1NlF7bAbeaM1pyZAIax3DR0A79UMrcFdrz8gqYiHnzOk+sJL6YyXwwJlZrDNz2ZmTBbtGoc1ZhTmAyC42ONj1OBNhzkxBMpl3Cx3sgjhh3ikrGHKHP5SJnXJxohYuNi6WAc8lmylVEc1KFYx4G9nDTsk2W21X+p2HyCKWOE96sBLhDRFZ7pRVDEjGsXIEeaXV8zETwHoGygVgsZyc+6XpTbKPO5J1T6nBCxq0eiLrOCdZR0oNjmrQStAwmABeJMmBHIzHJPAwJH1gPVdLDb7VoFVxYTDpUpgkynSKh/GyeiQMukVvfYE/8EWDYfOqdcBLzbFcaD3R0eF4mFBhebRrzqdSgwsabIogSBJl4ioRBO6gT5CKInGVSaJEVUWimlZcZZIqERR8ZU0r6mGvdGjLOYAwNIkPe1T3G3Vn0tiJAAfE5woVAqI1z5Kg1FtPaydCBcR9GrQOYFL8LniaSlRNUVpd0mgdwDSVSVOJvEsaV5cjGtei1sYkxdRjMiUlDMck4zUq4JCIrBeb1cJqQjL2VQs0H0S4g+xht2R7H+YaYljEExlsPkxKtsEwE3Ku12sN5axg2MWn0JdCvZpUUHOs0dgKzEmmyFcZl9wbsLZlo7BWTTmT5WIcBjm1hYpqJDeiib1KVWNRP5uTvI0pd61gf9cLeeCeu45LfOHT5bbWzGwL9TkT01rTsvINaTHucGZWUO/V3GHaWCbvNOfMyTLqVJFzDqCohnJvihHbrjKCOBEc7Jrevfe4bQ+69gMxv2LIK3cK0o6iTCnN2+KquzPk0pmiMlJLr8+q79Qtt92kp02XRgdEc8f1CYK0Y7BRX0A0qys+phIg6icci6pM+xqlQCm0qNAZUQfQ6o/P7qMa+/2VytMR0ZatJ/6Dvxw/AWAJTkQsYaz2AAAAAElFTkSuQmCC">
+
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
